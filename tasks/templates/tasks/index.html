@@ -1,0 +1,16 @@
+{% extends "tasks/layout.html" %}
+
+{% block body %}
+        <h1>Tasks</h1>
+        <ul>
+            {% for task in tasks %}
+                <li>
+                    {{ task }}
+                    <a href="{% url 'tasks:delete' task_id=forloop.counter0 %}">Delete</a>
+                </li>
+            {% empty %}
+                <li>No tasks.</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'tasks:add' %}">Add a New Task</a>
+{% endblock %}
